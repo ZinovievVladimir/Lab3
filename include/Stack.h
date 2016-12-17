@@ -24,8 +24,6 @@ class Stack{
   bool empty();
 };
 
-#endif  // INCLUDE_STACK_H_
-
 template <typename T>
 Stack<T>::~Stack() {
   while (top != 0) {
@@ -68,3 +66,5 @@ template <typename T>
 bool Stack<T>::empty() {
   return !top;
 }
+
+#endif  // INCLUDE_STACK_H_
