@@ -17,15 +17,16 @@ CNode* Add(CNode*, char*);  // Добавление в список
 class Polish {
   //char* PolRec;
   Var* vars;
+  char* PolRec;
 
   bool isTrueN(char);
   bool isTrueSymbol(char);
   
-  int prt(char);
+  int prt(char); //Приоритет
   CNode* parse(char*);  // Разбиение выражения на части
 public:
-  char* PolRec;
   Polish(char*);  // Преобразование в польскую запись
+  char* GetPolish(); // Выводит польскую запись
 
   void AddVar(char, int); // Добавляет/изменяет переменную
   double Resultof();  // Результат выражения

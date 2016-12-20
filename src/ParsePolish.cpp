@@ -202,7 +202,7 @@ Polish::Polish(char* exp) {
             break;
         }
 
-        if (*el == '-') {
+        if (*el == '-') {  // унарный минус
           if (!pos)
             st.push('_');
           else {
@@ -331,4 +331,8 @@ double Polish::Resultof() {
     return result;
   else
      throw std::logic_error("Wrong expression!");
+}
+
+char* Polish::GetPolish() {
+  return PolRec;
 }
