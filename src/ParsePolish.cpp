@@ -191,6 +191,9 @@ Polish::Polish(char* exp) {
           throw std::logic_error("Wrong expression!");
         st.pop();
         break;
+      case '^':
+        st.push(*el);
+        break;
       default:
         while (!st.empty()) {
           if ((prt(*el)) <= prt(st.gettop())) {

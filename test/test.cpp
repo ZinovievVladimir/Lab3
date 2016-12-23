@@ -160,9 +160,50 @@ TEST(Parse, MoreBrackets2) {
   ASSERT_ANY_THROW(Polish a("()"));
 }
 
-TEST(Parse, MoreBrackets3) {
-  ASSERT_ANY_THROW(Polish a("||"));
+TEST(Parse, DoubleMinus) {
+  Polish a("--2");
+
+  ASSERT_ANY_THROW(a.Resultof());
 }
+
+TEST(Parse, Example30) {
+  Polish a("2^3^2");
+
+  double res = a.Resultof();
+
+  EXPECT_EQ(512, res);
+}
+
+TEST(Parse, PlusMinus) {
+  Polish a("+-2");
+
+  ASSERT_ANY_THROW(a.Resultof());
+}
+
+TEST(Parse, Power0) {
+  Polish a("32^0");
+
+  double res = a.Resultof();
+
+  EXPECT_EQ(1, res);
+}
+
+TEST(Parse, PowerNegative) {
+  Polish a("-(-|-2*(-1)|)^(-1)");
+
+  double res = a.Resultof();
+
+  EXPECT_EQ(0.5, res);
+}
+
+TEST(Parse, morezeros) {
+  Polish a("1^(-0.000000000001-0)");
+
+  double res = a.Resultof();
+
+  EXPECT_EQ(1, res);
+}
+
 
 int main(int ac, char* av[])
 {
